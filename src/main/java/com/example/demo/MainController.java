@@ -39,28 +39,42 @@ public class MainController {
         if(result.hasErrors()){
             return "addbookpage";
         }
+        libraryBooks.setBookavailability("available");
         libraryRepository.save(libraryBooks);
         return "redirect:/booklist";
     }
 
+    // Book Detail page
+    @RequestMapping("/bookdetail/{id}")
+    public String bookDetail(@PathVariable("id") long id, Model model){
+        model.addAttribute("libraryBooks", libraryRepository.findOne(id));
+        return "bookpage";
+    }
+
     // Goes to list of Borrowed Books
-    @PostMapping("/borrowedbooks")
+    @RequestMapping("/borrowedbooks")
     public String availableBooks(Model model){
         model.addAttribute("borrowbooks", libraryRepository.findByBookavailability("borrowed"));
         return "bookreturnpage";
     }
-
+/*
     // Return Book this is an update
-    public String bookReturn(Model model){
-
-    }
+    @RequestMapping
+    public String bookReturn(@PathVariable("id") long id){
+        LibraryBooks libraryBooks = libraryRepository.findOne(id);
+        libraryBooks.setBookavailability("available");
+        return"booklistpage";
+    }*/
 
     // Goes to list of Available Books
-    @PostMapping("/availablebooks")
+    @RequestMapping("/availablebooks")
     public String checkedOutBooks(Model model){
         model.addAttribute("availbooks", libraryRepository.findByBookavailability("available"));
         return "borrowpage";
     }
-
+/*
     //Borrow Book this is an update
+    public String borrowBook(){
+
+    }*/
 }
