@@ -13,6 +13,10 @@ public class MainController {
 
     @Autowired
     LibraryRepository libraryRepository;
+    long x;
+    long w;
+    int y=0;
+    int z=0;
 
     // Starts Here
     @RequestMapping("/")
@@ -53,28 +57,61 @@ public class MainController {
 
     // Goes to list of Borrowed Books
     @RequestMapping("/borrowedbooks")
-    public String availableBooks(Model model){
+    public String borrowedBooks(Model model){
+        if(z==1){
+            model.addAttribute("returned",libraryRepository.findOne(w));
+        }
+        z=0;
         model.addAttribute("borrowbooks", libraryRepository.findByBookavailability("borrowed"));
         return "bookreturnpage";
     }
-/*
+
     // Return Book this is an update
-    @RequestMapping
+    @GetMapping("/returnbook/{id}")
     public String bookReturn(@PathVariable("id") long id){
+        w=id;
+        z=1;
         LibraryBooks libraryBooks = libraryRepository.findOne(id);
         libraryBooks.setBookavailability("available");
-        return"booklistpage";
-    }*/
+        libraryRepository.save(libraryBooks);
+        return"redirect:/borrowedbooks";
+    }
 
     // Goes to list of Available Books
     @RequestMapping("/availablebooks")
-    public String checkedOutBooks(Model model){
+    public String checkOutBooks(Model model){
+        if(y==1){
+            model.addAttribute("borrowed",libraryRepository.findOne(x));
+        }
+        y=0;
         model.addAttribute("availbooks", libraryRepository.findByBookavailability("available"));
         return "borrowpage";
     }
-/*
-    //Borrow Book this is an update
-    public String borrowBook(){
 
+    //Borrow Book this is an update
+    @GetMapping("/checkout/{id}")
+    public String bookBorrow(@PathVariable("id") long id){
+        x=id;
+        y=1;
+        LibraryBooks libraryBooks = libraryRepository.findOne(id);
+        libraryBooks.setBookavailability("borrowed");
+        libraryRepository.save(libraryBooks);
+        return"redirect:/availablebooks";
+    }
+    /*
+    @PostMapping("/availablebooks")
+    public String checkBooks(Model model , Model model2){
+        model.addAttribute("borrowed",libraryRepository.findOne(x));
+        model2.addAttribute("availbooks", libraryRepository.findByBookavailability("available"));
+        return "borrowpage";
+    }
+
+    @PostMapping("/availablebooks/{id}")
+    public String checkederedBooks( Model model1, Model model2){
+        model1.addAttribute("borrowed",libraryRepository.findOne(id));
+        model2.addAttribute("availbooks", libraryRepository.findByBookavailability("available"));
+        return "borrowpage";
     }*/
+
+
 }
