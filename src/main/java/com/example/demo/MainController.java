@@ -98,20 +98,5 @@ public class MainController {
         libraryRepository.save(libraryBooks);
         return"redirect:/availablebooks";
     }
-    /*
-    @PostMapping("/availablebooks")
-    public String checkBooks(Model model , Model model2){
-        model.addAttribute("borrowed",libraryRepository.findOne(x));
-        model2.addAttribute("availbooks", libraryRepository.findByBookavailability("available"));
-        return "borrowpage";
-    }
-
-    @PostMapping("/availablebooks/{id}")
-    public String checkederedBooks( Model model1, Model model2){
-        model1.addAttribute("borrowed",libraryRepository.findOne(id));
-        model2.addAttribute("availbooks", libraryRepository.findByBookavailability("available"));
-        return "borrowpage";
-    }*/
-
 
 }
