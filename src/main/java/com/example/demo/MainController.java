@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import java.time.*;
 
 import javax.validation.Valid;
 
@@ -95,6 +96,7 @@ public class MainController {
         y=1;
         LibraryBooks libraryBooks = libraryRepository.findOne(id);
         libraryBooks.setBookavailability("borrowed");
+        libraryBooks.setUpdated(LocalDateTime.now());
         libraryRepository.save(libraryBooks);
         return"redirect:/availablebooks";
     }

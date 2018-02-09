@@ -72,6 +72,14 @@
                             <td>Availability</td>
                             <td th:text="${libraryBooks.bookavailability}"></td>
                         </tr>
+                        <tr>
+                            <td>Added to Library</td>
+                            <td th:text="${libraryBooks.created}"></td>
+                        </tr>
+                        <tr>
+                            <td>Last Checked Out</td>
+                            <td th:text="${libraryBooks.updated}"></td>
+                        </tr>
                     </tbody>
             </table>
         </div>
