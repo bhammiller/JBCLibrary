@@ -39,8 +39,7 @@
 </nav>
 
 <div class="container-fluid">
-
-    <p th:each="libraryBooks : ${returned}" th:target="_blank" th:inline="text" >[[${libraryBooks.booktitle}]] has been returned</p>
+        <h2 class="jumbotron" th:each="libraryBooks : ${returned}" th:target="_blank" th:inline="text" >[[${libraryBooks.booktitle}]] has been returned</h2>
     <div class="form-group-row">
         <div class="col-sm-9">
     <h2>Borrowed Book List</h2>
