@@ -40,44 +40,46 @@
 
 <div class="container-fluid">
     <h2>Book Details</h2>
-    <table class="table table-striped table-bordered">
-        <thead>
-        <tr>
-            <th></th>
-            <th>Details</th>
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Details</th>
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Title</td>
-            <td th:text="${libraryBooks.booktitle}"></td>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td>Title</td>
+                            <td th:text="${libraryBooks.booktitle}"></td>
 
-        </tr>
-        <tr>
-            <td>Author</td>
-            <td th:text="${libraryBooks.author}"></td>
-        </tr>
-        <tr>
-            <td>Year of Publication</td>
-            <td th:text="${libraryBooks.publicationyear}"></td>
-        </tr>
-        <tr>
-            <td>ISBN</td>
-            <td th:text="${libraryBooks.isbn}"></td>
-        </tr>
-        <tr>
-            <td>Image</td>
-            <td th:text="${libraryBooks.bookimage}"></td>
-        </tr>
-        <tr>
-            <td>Availability</td>
-            <td th:text="${libraryBooks.bookavailability}"></td>
-        </tr>
-        </tbody>
-    </table>
+                        </tr>
+                        <tr>
+                            <td>Author</td>
+                            <td th:text="${libraryBooks.author}"></td>
+                        </tr>
+                        <tr>
+                            <td>Year of Publication</td>
+                            <td th:text="${libraryBooks.publicationyear}"></td>
+                        </tr>
+                        <tr>
+                            <td>ISBN</td>
+                            <td th:text="${libraryBooks.isbn}"></td>
+                        </tr>
+                        <tr>
+                            <td>Availability</td>
+                            <td th:text="${libraryBooks.bookavailability}"></td>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+                <img th:src="${libraryBooks.bookimage}" th:alt="${libraryBooks.bookimage}" style="width:400px;height:500px;"/>
+        </div>
+    </div>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"

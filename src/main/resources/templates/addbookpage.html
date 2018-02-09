@@ -22,7 +22,7 @@
             <a class="nav-link" th:href="@{/booklist}">Book List</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/addbook}">Add a Book</a>
+            <a class="nav-link active" th:href="@{/addbook}">Add a Book</a>
         </li>
 
         <!-- Dropdown -->
@@ -46,40 +46,45 @@
         <input type="hidden" th:field="*{id}" />
         <div class="form-group row">
             <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputTitle" th:field="*{booktitle}" placeholder="Title"/>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputTitle" th:field="*{booktitle}" placeholder="Title" />
+                <small class="form-text text-muted">Required</small>
                 <span th:if="${#fields.hasErrors('booktitle')}"
-                      th:errors="*{booktitle}"></span>
+                      th:errors="*{booktitle}" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputAuthor" class="col-sm-2 col-form-label">Author</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="inputAuthor" th:field="*{author}" placeholder="Author"/>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputAuthor" th:field="*{author}" placeholder="Author" />
+                <small class="form-text text-muted">Required</small>
                 <span th:if="${#fields.hasErrors('author')}"
-                      th:errors="*{author}"></span>
+                      th:errors="*{author}" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputYear" class="col-sm-2 col-form-label">Year of Publication</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputYear" th:field="*{publicationyear}" placeholder="Publication Year"/>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputYear" th:field="*{publicationyear}" placeholder="Publication Year" />
+                <small class="form-text text-muted">Required</small>
                 <span th:if="${#fields.hasErrors('publicationyear')}"
-                      th:errors="*{publicationyear}"></span>
+                      th:errors="*{publicationyear}" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputISBN" class="col-sm-2 col-form-label">ISBN Number</label>
-            <div class="col-sm-10">
+            <div class="col-sm-5">
                 <input type="text" class="form-control" id="inputISBN" th:field="*{isbn}" placeholder="ISBN Number"/>
+                <small class="form-text text-muted">Optional</small>
                 <span th:if="${#fields.hasErrors('isbn')}"
                       th:errors="*{isbn}"></span>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
-            <div class="col-sm-10">
+            <div class="col-sm-5">
                 <input type="text" class="form-control" id="inputImage" th:field="*{bookimage}" placeholder="Image URL"/>
+                <small class="form-text text-muted">Optional</small>
                 <span th:if="${#fields.hasErrors('bookimage')}"
                       th:errors="*{bookimage}"></span>
             </div>

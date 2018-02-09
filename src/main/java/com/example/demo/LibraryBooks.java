@@ -16,10 +16,16 @@ public class LibraryBooks {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotNull
+    @Size(min = 1, message = "Please enter book title")
     private String booktitle;
 
+    @NotNull
+    @Size(min = 1,message = "Please enter author")
     private String author;
 
+    @NotNull
+    @Size(min = 1, max = 4, message = "Please enter publication year(XXXX)")
     private String publicationyear;
 
     private String isbn;
